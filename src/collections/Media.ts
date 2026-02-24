@@ -41,9 +41,13 @@ export const Media: CollectionConfig = {
   ],
   upload: {
     // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
-    staticDir: path.resolve(dirname, '../../public/media'),
+    // staticDir: path.resolve(dirname, '../../public/media'),
+    staticDir: 'media',
+
     adminThumbnail: 'thumbnail',
     focalPoint: true,
+    disableLocalStorage: true,
+
     imageSizes: [
       {
         name: 'thumbnail',
@@ -79,3 +83,81 @@ export const Media: CollectionConfig = {
     ],
   },
 }
+
+// import type { CollectionConfig } from 'payload'
+// import {
+//   FixedToolbarFeature,
+//   InlineToolbarFeature,
+//   lexicalEditor,
+// } from '@payloadcms/richtext-lexical'
+
+// import { anyone } from '../access/anyone'
+// import { authenticated } from '../access/authenticated'
+// import cloudinary from '@/lib/cloudinary'
+
+// export const Media: CollectionConfig = {
+//   slug: 'media',
+//   folders: true,
+
+//   access: {
+//     create: authenticated,
+//     delete: authenticated,
+//     read: anyone,
+//     update: authenticated,
+//   },
+
+//   fields: [
+//     {
+//       name: 'alt',
+//       type: 'text',
+//     },
+//     {
+//       name: 'caption',
+//       type: 'richText',
+//       editor: lexicalEditor({
+//         features: ({ rootFeatures }) => [
+//           ...rootFeatures,
+//           FixedToolbarFeature(),
+//           InlineToolbarFeature(),
+//         ],
+//       }),
+//     },
+//     {
+//       name: 'cloudinaryURL',
+//       type: 'text',
+//       admin: { readOnly: true },
+//     },
+//     {
+//       name: 'public_id',
+//       type: 'text',
+//       admin: { readOnly: true },
+//     },
+//   ],
+
+//   upload: false, // 🚀 disable local upload
+
+//   hooks: {
+//     beforeChange: [
+//       async ({ req, data }) => {
+//         if (req.file?.tempFilePath) {
+//           const uploadResult = await cloudinary.uploader.upload(req.file.tempFilePath, {
+//             folder: 'payload-media',
+//           })
+
+//           data.cloudinaryURL = uploadResult.secure_url
+//           data.public_id = uploadResult.public_id
+//         }
+
+//         return data
+//       },
+//     ],
+
+//     afterDelete: [
+//       async ({ doc }) => {
+//         if (doc.public_id) {
+//           await cloudinary.uploader.destroy(doc.public_id)
+//         }
+//       },
+//     ],
+//   },
+// }
