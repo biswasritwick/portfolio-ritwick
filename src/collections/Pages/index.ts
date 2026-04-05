@@ -13,6 +13,8 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 import { MainHeroBanner } from '@/blocks/MainHeroBanner/config'
+import { FormBlockContent } from '@/blocks/FormBlock/config'
+import { AboutUsBlock } from '@/blocks/AboutUs/config'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -72,7 +74,16 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, MainHeroBanner],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                MainHeroBanner,
+                FormBlockContent,
+                AboutUsBlock,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

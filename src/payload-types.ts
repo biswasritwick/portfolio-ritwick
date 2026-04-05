@@ -198,7 +198,16 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | MainHeroBannerBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | MainHeroBannerBlock
+    | FormBlockContent
+    | AboutUsBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -795,6 +804,58 @@ export interface MainHeroBannerBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "formBlockContent".
+ */
+export interface FormBlockContent {
+  forms?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'formBlockContent';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "aboutUsBlock".
+ */
+export interface AboutUsBlock {
+  title: string;
+  aboutusStaticText: string;
+  education?:
+    | {
+        degree: string;
+        institution: string;
+        cgpa?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  skillsName?:
+    | {
+        name: string;
+        iconType?: ('image' | 'html') | null;
+        iconImage?: (string | null) | Media;
+        iconHtml?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'aboutUsBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1102,6 +1163,8 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         mainHeroBannerBlock?: T | MainHeroBannerBlockSelect<T>;
+        formBlockContent?: T | FormBlockContentSelect<T>;
+        aboutUsBlock?: T | AboutUsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1212,6 +1275,42 @@ export interface MainHeroBannerBlockSelect<T extends boolean = true> {
   description?: T;
   buttonText?: T;
   buttonLink?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "formBlockContent_select".
+ */
+export interface FormBlockContentSelect<T extends boolean = true> {
+  forms?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "aboutUsBlock_select".
+ */
+export interface AboutUsBlockSelect<T extends boolean = true> {
+  title?: T;
+  aboutusStaticText?: T;
+  education?:
+    | T
+    | {
+        degree?: T;
+        institution?: T;
+        cgpa?: T;
+        id?: T;
+      };
+  skillsName?:
+    | T
+    | {
+        name?: T;
+        iconType?: T;
+        iconImage?: T;
+        iconHtml?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

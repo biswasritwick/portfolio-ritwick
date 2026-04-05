@@ -1,0 +1,49 @@
+.about-section-main {
+    & .about-section-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    & .education-section {
+        background-image: radial-gradient(circle at .927644% 95.6395%, #cbd5e180, #0206171a);
+        padding: 2px;
+        border-radius: 1.5rem;
+        transition: background-image .5s ease-in-out;
+    }
+
+    & .education-section-inner {
+        background-color: #020617;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 1.5rem;
+        overflow: hidden;
+
+        &:hover {
+            background-color: #020617d9;
+        }
+    }
+
+    & .education {
+        & .education-item {
+            padding-left: 55px;
+            position: relative;
+
+            &::after {
+                content: "";
+                width: 32px;
+                height: 32px;
+                max-width: 32px;
+                position: absolute;
+                background-image: url('/api/media/file/study.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                left: 11px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}

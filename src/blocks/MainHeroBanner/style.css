@@ -1,5 +1,203 @@
-.hero-section-content{
-    *{
-        color: var(--text-color-light);
+.hero-section {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(0deg, #020617 11.5%, #02061700 83.46%);
+
     }
+}
+
+
+.gradient-bg {
+    --color-bg: linear-gradient(180deg, var(--background-dark-color) 0%, rgba(255, 255, 255, 0) 100%);
+    --color-interactive: 20, 48, 146;
+    --color-interactive2: 20, 48, 146;
+    --circle-size: 40%;
+    --blending: hard-light;
+    --blur: 20px;
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: var(--color-bg);
+    top: 0;
+    left: 0;
+}
+
+/* ================= SVG ================= */
+.gradient-bg svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+}
+
+/* ================= CONTAINER ================= */
+.gradient-bg .gradients-container {
+    filter: url(#goo) blur(var(--blur));
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.gradient-bg .gradients-container * {
+    display: block;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes moveInCircle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes moveVertical {
+    0% {
+        transform: translateY(-50%);
+    }
+
+    50% {
+        transform: translateY(50%);
+    }
+
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes moveHorizontal {
+    0% {
+        transform: translateX(-50%) translateY(-10%);
+    }
+
+    50% {
+        transform: translateX(50%) translateY(10%);
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(-10%);
+    }
+}
+
+/* ================= GRADIENT BLOBS ================= */
+.gradient-bg .g1,
+.gradient-bg .g2,
+.gradient-bg .g3,
+.gradient-bg .g4,
+.gradient-bg .g5,
+.gradient-bg .interactive {
+    position: absolute;
+    mix-blend-mode: var(--blending);
+    opacity: 1;
+}
+
+/* Individual positioning */
+.gradient-bg .g1 {
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    animation: moveVertical 30s ease infinite;
+}
+
+.gradient-bg .g2 {
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    transform-origin: calc(50% - 400px);
+    animation: moveInCircle 20s reverse infinite;
+}
+
+.gradient-bg .g3 {
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2 + 200px);
+    left: calc(50% - var(--circle-size) / 2 - 500px);
+    transform-origin: calc(50% + 400px);
+    animation: moveInCircle 40s linear infinite;
+}
+
+.gradient-bg .g4 {
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    transform-origin: calc(50% - 200px);
+    animation: moveHorizontal 40s ease infinite;
+    opacity: 0.7;
+}
+
+.gradient-bg .g5 {
+    width: calc(var(--circle-size) * 2);
+    height: calc(var(--circle-size) * 2);
+    top: calc(50% - var(--circle-size));
+    left: calc(50% - var(--circle-size));
+    transform-origin: calc(50% - 800px) calc(50% + 200px);
+    animation: moveInCircle 20s ease infinite;
+}
+
+/* ================= INTERACTIVE ================= */
+.gradient-bg .interactive {
+    width: 100%;
+    height: 100%;
+    top: -50%;
+    left: -50%;
+    opacity: 0.7;
+}
+
+/* ================= DEFAULT HIDDEN ================= */
+.gradient-bg .g1,
+.gradient-bg .g2,
+.gradient-bg .g3,
+.gradient-bg .g4,
+.gradient-bg .g5,
+.gradient-bg .interactive {
+    /* display: none; */
+}
+
+.g1,
+.g3,
+.g5,
+.g2,
+.g4,
+.interactive {
+    background: radial-gradient(circle at center, rgba(var(--color-interactive2), 0.8) 0, rgba(var(--color-interactive2), 0) 50%) no-repeat;
+    filter: blur(81.6500015258789px);
+    /* display: none; */
+}
+
+/* ================= DARK MODE ================= */
+.dark-mode .gradient-bg .g2,
+.dark-mode .gradient-bg .g4,
+.dark-mode .gradient-bg .interactive {
+    background: radial-gradient(circle at center,
+            rgba(var(--color-interactive), 0.8) 0%,
+            rgba(var(--color-interactive), 0) 50%);
+    display: block;
+}
+
+.dark-mode .gradient-bg .g1,
+.dark-mode .gradient-bg .g3,
+.dark-mode .gradient-bg .g5 {
+    background: radial-gradient(circle at center,
+            rgba(var(--color-interactive2), 0.8) 0%,
+            rgba(var(--color-interactive2), 0) 50%);
+    display: block;
 }

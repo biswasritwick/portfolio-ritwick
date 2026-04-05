@@ -115,16 +115,11 @@ html[data-theme='light'] {
 }
 
 :root {
-
-  /* Default colors */
-
-
   /* Custom variables */
-  --background-color: #fff;
-  --background-dark-color: #212121;
-  --text-color: #212121;
+  --background-color: #FAF9F9;
+  --background-dark-color: #020617;
   --text-highlight-color: rgb(126 34 206);
-  --text-color-light: #FFFFFF;
+  --text-color: #FFFFFF;
   --text-gray: #575757;
   --bg-dark: #2B2B2B;
   --primary-color: #EA7B2C;
@@ -150,6 +145,21 @@ html[data-theme='light'] {
   --gap: 100px
 }
 
+.dark_mode {
+  --background-color: #FAF9F9;
+  --background-dark-color: #FAF9F9;
+
+  --text-highlight-color: rgb(126 34 206);
+  --text-color: #212121;
+  --text-gray: #575757;
+  --bg-dark: #2B2B2B;
+  --primary-color: #EA7B2C;
+  --global-white: #E4E4E4;
+  --modal-bg: #EAEDEC;
+  --card-border: #BABABA;
+  --bg-blue: #164284;
+}
+
 *:focus-visible {
   outline: 1px solid var(--text-color);
 }
@@ -167,7 +177,9 @@ html,
 body {
   scroll-behavior: smooth;
   font-family: var(--body-font);
+  background-color: var(--background-dark-color);
 }
+
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -180,8 +192,7 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   opacity: 0;
-  /* background: var(--button-blue); */
-  /* scroll bar hover */
+
 }
 
 p,
@@ -202,6 +213,7 @@ h6 {
   font-family: var(--heading-font);
   margin: 0 !important;
   color: var(--text-color);
+
   font-weight: 500;
   line-height: 120%;
   letter-spacing: 1.92px;
@@ -304,7 +316,23 @@ h6,
 }
 
 .highlightText {
-  color: var(--text-highlight-color) !important;
+  /* color: var(--text-highlight-color) !important; */
+  background: linear-gradient(90deg, #6dffc1 1.41%, #bd9eff 78.13%);
+  animation: hueRotate 8s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes hueRotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+  }
+
 }
 
 .text_color {
@@ -364,7 +392,7 @@ header.header_main {
 
   .nav_main {
     * {
-      color: var(--text-color-light);
+      color: var(--text-color);
     }
   }
 }

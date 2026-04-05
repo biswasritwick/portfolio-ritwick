@@ -14,9 +14,12 @@ import { getClientSideURL } from '@/utilities/getURL'
 export type FormBlockType = {
   blockName?: string
   blockType?: 'formBlock'
-  enableIntro: boolean
-  form: FormType
-  introContent?: DefaultTypedEditorState
+  // Optional to align with payload definition which may omit this
+  enableIntro?: boolean | null
+  // Accept any form payload here since there can be multiple shapes (string or object from different libs)
+  form: any
+  // Intro content coming from payload may be a rich text structure; allow any to avoid strict mismatch
+  introContent?: any
 }
 
 export const FormBlock: React.FC<
@@ -45,6 +48,25 @@ export const FormBlock: React.FC<
   const [hasSubmitted, setHasSubmitted] = useState<boolean>()
   const [error, setError] = useState<{ message: string; status?: string } | undefined>()
   const router = useRouter()
+
+  // Helper to render a single form field with proper typing
+  const renderFormField = (field: FormFieldBlock, index: number) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields]
+    if (!Field) return null
+    return (
+      <div className="mb-6 last:mb-0" key={index}>
+        <Field
+          form={formFromProps}
+          {...field}
+          {...formMethods}
+          control={control}
+          errors={errors}
+          register={register}
+        />
+      </div>
+    )
+  }
 
   const onSubmit = useCallback(
     (data: FormFieldBlock[]) => {
@@ -128,27 +150,7 @@ export const FormBlock: React.FC<
           {!hasSubmitted && (
             <form id={formID} onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-4 last:mb-0">
-                {formFromProps &&
-                  formFromProps.fields &&
-                  formFromProps.fields?.map((field, index) => {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields]
-                    if (Field) {
-                      return (
-                        <div className="mb-6 last:mb-0" key={index}>
-                          <Field
-                            form={formFromProps}
-                            {...field}
-                            {...formMethods}
-                            control={control}
-                            errors={errors}
-                            register={register}
-                          />
-                        </div>
-                      )
-                    }
-                    return null
-                  })}
+                {formFromProps && formFromProps.fields && formFromProps.fields?.map(renderFormField)}
               </div>
 
               <Button form={formID} type="submit" variant="default">
