@@ -26,11 +26,12 @@ export const MainHeroBanner: Block = {
       required: true,
     },
     {
-      name: 'buttonText',
-      type: 'text',
-      required: true,
-      defaultValue: 'About Me',
+      type: 'upload',
+      relationTo: 'media',
+      name: 'profileImage',
+      label: 'Profile Image',
     },
+
     {
       name: 'buttonLink',
       type: 'text',

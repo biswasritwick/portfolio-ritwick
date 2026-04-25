@@ -9,7 +9,7 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
   name,
   staticText,
   description,
-  buttonText,
+  profileImage,
   buttonLink,
   bgImage,
 }) => {
@@ -126,8 +126,8 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
       </div>
 
       {/* Content */}
-      <div className="container w-full h-full flex justify-start items-center hero-section-content relative z-10">
-        <div className="hero-text flex flex-col gap-6">
+      <div className="container w-full h-full md:grid grid-cols-12 flex flex-col justify-between md:items-center items-start hero-section-content relative z-10">
+        <div className="hero-text flex flex-col gap-6 col-span-7">
           <div className="flex flex-col gap-2">
             <p className="start-text">Start /&gt;</p>
 
@@ -145,10 +145,22 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
           </div>
         </div>
 
-        <div className="button-container">
-          <a className="hero-button" href={buttonLink}>
-            <span>{buttonText}</span>
-          </a>
+        <div className="button-container flex justify-end relative  col-span-5">
+          <div className="max-w-[400px] max-h-[400px] rounded-[50%] overflow-hidden relative">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-600 to-blue-500 animate-pulse blur-lg scale-105"></div>
+            <a className="hero-button z-20 relative max-w-[95%] max-h-[95%]" href={buttonLink}>
+              {profileImage && typeof profileImage !== 'string' && (
+                <figure className="profile_img w-full h-full ">
+                  <Image
+                    src={profileImage.url || ''}
+                    alt={profileImage.alt || 'feature_img'}
+                    width={1920}
+                    height={870}
+                  />
+                </figure>
+              )}
+            </a>
+          </div>
         </div>
       </div>
 

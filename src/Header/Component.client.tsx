@@ -8,6 +8,7 @@ import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
+import { SideBarSocialLink } from './SideBar'
 
 interface HeaderClientProps {
   data: Header
@@ -101,6 +102,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             <span aria-hidden="true">{themeIcon}</span>
           </button>
           <HeaderNav data={data} />
+          {/* <SideBarSocialLink data={data} />  */}
         </div>
       </div>
     </header>

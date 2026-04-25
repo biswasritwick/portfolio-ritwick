@@ -796,7 +796,7 @@ export interface MainHeroBannerBlock {
   name: string;
   staticText: string;
   description: string;
-  buttonText: string;
+  profileImage?: (string | null) | Media;
   buttonLink: string;
   id?: string | null;
   blockName?: string | null;
@@ -841,12 +841,18 @@ export interface AboutUsBlock {
         id?: string | null;
       }[]
     | null;
-  skillsName?:
+  worktype?:
     | {
-        name: string;
-        iconType?: ('image' | 'html') | null;
-        iconImage?: (string | null) | Media;
-        iconHtml?: string | null;
+        workName: string;
+        skills?:
+          | {
+              name: string;
+              iconType?: ('image' | 'html') | null;
+              iconImage?: (string | null) | Media;
+              iconHtml?: string | null;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -1273,7 +1279,7 @@ export interface MainHeroBannerBlockSelect<T extends boolean = true> {
   name?: T;
   staticText?: T;
   description?: T;
-  buttonText?: T;
+  profileImage?: T;
   buttonLink?: T;
   id?: T;
   blockName?: T;
@@ -1302,13 +1308,19 @@ export interface AboutUsBlockSelect<T extends boolean = true> {
         cgpa?: T;
         id?: T;
       };
-  skillsName?:
+  worktype?:
     | T
     | {
-        name?: T;
-        iconType?: T;
-        iconImage?: T;
-        iconHtml?: T;
+        workName?: T;
+        skills?:
+          | T
+          | {
+              name?: T;
+              iconType?: T;
+              iconImage?: T;
+              iconHtml?: T;
+              id?: T;
+            };
         id?: T;
       };
   id?: T;
@@ -1783,6 +1795,26 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  socialLinks?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1821,6 +1853,20 @@ export interface Footer {
  */
 export interface HeaderSelect<T extends boolean = true> {
   navItems?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  socialLinks?:
     | T
     | {
         link?:

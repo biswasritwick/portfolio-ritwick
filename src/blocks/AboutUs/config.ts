@@ -41,50 +41,63 @@ export const AboutUsBlock: Block = {
       ],
     },
     {
-      name: 'skillsName',
+      name: 'worktype',
       type: 'array',
-      label: 'Skills Name',
+      label: 'Work Types',
       fields: [
         {
-          name: 'name',
+          name: 'workName',
           type: 'text',
           required: true,
-          label: 'Skill Name',
+          label: 'Work Name',
         },
-
         {
-          name: 'iconType',
-          type: 'radio',
-          label: 'Icon Type',
-          options: [
+          name: 'skills',
+          type: 'array',
+          label: 'Skills Name',
+          fields: [
             {
-              label: 'Image Upload',
-              value: 'image',
+              name: 'name',
+              type: 'text',
+              required: true,
+              label: 'Skill Name',
+            },
+
+            {
+              name: 'iconType',
+              type: 'radio',
+              label: 'Icon Type',
+              options: [
+                {
+                  label: 'Image Upload',
+                  value: 'image',
+                },
+                {
+                  label: 'SVG / HTML',
+                  value: 'html',
+                },
+              ],
+              defaultValue: 'image',
             },
             {
-              label: 'SVG / HTML',
-              value: 'html',
+              name: 'iconImage',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Skill Icon Image',
+              admin: {
+                condition: (_, siblingData) => siblingData.iconType === 'image',
+              },
+            },
+            {
+              name: 'iconHtml',
+              type: 'code',
+              label: 'SVG / HTML Code',
+              admin: {
+                language: 'html',
+                condition: (_, siblingData) => siblingData.iconType === 'html',
+              },
             },
           ],
-          defaultValue: 'image',
-        },
-        {
-          name: 'iconImage',
-          type: 'upload',
-          relationTo: 'media',
-          label: 'Skill Icon Image',
-          admin: {
-            condition: (_, siblingData) => siblingData.iconType === 'image',
-          },
-        },
-        {
-          name: 'iconHtml',
-          type: 'code',
-          label: 'SVG / HTML Code',
-          admin: {
-            language: 'html',
-            condition: (_, siblingData) => siblingData.iconType === 'html',
-          },
         },
       ],
     },

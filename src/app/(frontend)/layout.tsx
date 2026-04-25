@@ -13,12 +13,18 @@ import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
+import { getPayload } from 'payload'
+import config from '@payload-config'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
+import { SideBarSocialLink } from '@/Header/SideBar'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
-
+  const payload = await getPayload({ config })
+  const header = await payload.findGlobal({
+    slug: 'header',
+  })
   return (
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
       <head>
@@ -35,6 +41,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
 
           <Header />
+          {/* <div className="main_section flex ">
+            <SideBarSocialLink data={header} />
+          </div> */}
           {children}
           <Footer />
         </Providers>

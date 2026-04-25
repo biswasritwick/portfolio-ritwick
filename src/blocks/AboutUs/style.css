@@ -46,4 +46,24 @@
             }
         }
     }
+    & .skills-section{
+        &.skill-item{
+            display: flex;
+            align-items: center;
+            
+        }
+        & .skill-icon{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 32px;
+            width: 32px;
+            height: 32px;
+            & span,svg, img{
+                max-width: 100%;
+                max-height: 100%;
+
+            }
+        }
+    }
 }

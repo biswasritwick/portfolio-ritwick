@@ -25,6 +25,22 @@ export const Header: GlobalConfig = {
         },
       },
     },
+    {
+      name: 'socialLinks',
+      type: 'array',
+      fields: [
+        link({
+          appearances: false,
+        }),
+      ],
+      maxRows: 6,
+      admin: {
+        initCollapsed: true,
+        components: {
+          RowLabel: '@/Header/RowLabel#RowLabel',
+        },
+      },
+    },
   ],
   hooks: {
     afterChange: [revalidateHeader],
