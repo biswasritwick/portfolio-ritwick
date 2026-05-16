@@ -18,6 +18,21 @@ export const FormBlockContent: Block = {
         ],
       }),
     },
+    {
+      name: 'cvImage',
+      label: 'CV Images',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
+      name: 'cvImagePdf',
+      label: 'CV PDF',
+      type: 'upload',
+      relationTo: 'media',
+      filterOptions: {
+        mimeType: { contains: 'pdf' },
+      },
+    },
   ],
   interfaceName: 'formBlockContent',
 }

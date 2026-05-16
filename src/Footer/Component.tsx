@@ -18,7 +18,10 @@ export async function Footer() {
       <div className="footer_inner fixed bottom-0 left-0 w-full">
         <div className="container py-8 gap-8 flex flex-col md:flex-row md:justify-between ">
           <Link className="flex items-center" href="/">
-            <Logo />
+            {/* <Logo /> */}
+            <div className="text-3xl font-bold text-white mousegrow" id="hero">
+              &lt;RITWICK/&gt;
+            </div>
           </Link>
 
           <div className="flex flex-col-reverse items-start md:flex-row gap-4 md:items-center">

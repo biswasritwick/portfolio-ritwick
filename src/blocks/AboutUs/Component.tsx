@@ -45,7 +45,9 @@ export const AboutUsBlock: React.FC<AboutUsBlockProps> = ({
           <div className="education-section" ref={educationRef} onMouseMove={handleMouseMove}>
             <div className="education-section-inner flex flex-col items-center p-8 gap-10">
               {/* DESCRIPTION */}
-              <p className="about-description max-w-[80%] text-center">{aboutusStaticText}</p>
+              <p className="about-description md:max-w-[80%] max-w-full text-center">
+                {aboutusStaticText}
+              </p>
 
               {/* EDUCATION */}
               <div className="education w-full flex flex-col items-start gap-4">
@@ -69,7 +71,7 @@ export const AboutUsBlock: React.FC<AboutUsBlockProps> = ({
 
                 <div
                   className="skills-list grid w-full
-                  grid-cols-2  flex-col gap-6"
+                  md:grid-cols-2 grid-cols-1  flex-col gap-6"
                 >
                   {worktype?.map((skillGroup, i) => (
                     <div key={skillGroup.id || i} className="skill-item flex flex-col gap-4">
@@ -81,7 +83,7 @@ export const AboutUsBlock: React.FC<AboutUsBlockProps> = ({
                         {skillGroup.skills?.map((skill, j) => (
                           <div key={skill.id || j} className="">
                             <div className="skill-detail flex items-center gap-3 bg-white/5 px-3 py-2  hover:bg-white/10 transition rounded-[8px]">
-                              <p className="skill-name text-sm">{skill.name}</p>
+                              <p className="skill-name text-sm capitalize">{skill.name}</p>
                               <div className="skill-icon flex items-center justify-center">
                                 {skill.iconType === 'image' &&
                                   skill.iconImage &&

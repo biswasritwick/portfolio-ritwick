@@ -822,6 +822,8 @@ export interface FormBlockContent {
     };
     [k: string]: unknown;
   } | null;
+  cvImage?: (string | null) | Media;
+  cvImagePdf?: (string | null) | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'formBlockContent';
@@ -1290,6 +1292,8 @@ export interface MainHeroBannerBlockSelect<T extends boolean = true> {
  */
 export interface FormBlockContentSelect<T extends boolean = true> {
   forms?: T;
+  cvImage?: T;
+  cvImagePdf?: T;
   id?: T;
   blockName?: T;
 }

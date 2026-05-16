@@ -371,9 +371,11 @@ img {
   height: 100%;
   object-fit: cover;
 }
-.main_article{
+
+.main_article {
   padding-bottom: 105px
 }
+
 header.header_main {
   & .header_main__inner {
     width: 100%;
@@ -403,7 +405,7 @@ footer.footer_main {
   & .footer_inner {
     width: 100%;
     height: 100%;
-    max-height:105px;
+    max-height: 105px;
     position: fixed;
     z-index: 20;
     bottom: 0;
@@ -425,6 +427,40 @@ footer.footer_main {
       color: var(--text-color);
     }
   }
+}
+
+.section_gap_top,
+.section_gap_bottom,
+.section_padding_top,
+.section_padding_bottom {
+  --gap: 100px;
+}
+
+.section_gap_top {
+  margin-top: var(--gap);
+}
+
+.section_gap_bottom {
+  margin-bottom: var(--gap);
+}
+
+.section_padding_top {
+  padding-top: var(--gap);
+}
+
+.section_padding_bottom {
+  padding-bottom: var(--gap);
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove spinners - Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 /* global css end */
@@ -457,6 +493,13 @@ footer.footer_main {
     --h5dif: 22px !important;
   }
 
+  .section_gap_top,
+  .section_gap_bottom,
+  .section_padding_top,
+  .section_padding_bottom {
+    --gap: 50px;
+  }
+
   h1,
   .h1 {
     font-size: var(--h1) !important;
@@ -487,6 +530,28 @@ footer.footer_main {
   .h6 {
     font-size: var(--h6) !important;
   }
+}
+
+@media screen and (max-width:1024px) {
+
+  .section_gap_top,
+  .section_gap_bottom,
+  .section_padding_top,
+  .section_padding_bottom {
+    --gap: 40px;
+  }
+
+}
+
+@media screen and (max-width:767px) {
+
+  .hero-section {
+    padding-top: 130px;
+  }
+  .main_article {
+    padding-bottom: 105px;
+    padding-top: 130px;
+}
 }
 
 /* responsive end here  */

@@ -201,3 +201,10 @@
             rgba(var(--color-interactive2), 0) 50%);
     display: block;
 }
+
+@media screen and (max-width:767px) {
+
+    .hero-section {
+        padding-top: 130px;
+    }
+}

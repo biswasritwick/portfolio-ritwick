@@ -9,6 +9,7 @@ import type { Header } from '@/payload-types'
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
 import { SideBarSocialLink } from './SideBar'
+import { Logomain } from '@/snippets/Icons'
 
 interface HeaderClientProps {
   data: Header
@@ -90,9 +91,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <div className="text-3xl font-bold text-white mousegrow" id="hero">
             &lt;RITWICK/&gt;
           </div>
+          {/* <Logomain /> */}
         </Link>
         <div className="flex items-center gap-4">
-          <button
+          {/* <button
             id="theme-toggle"
             onClick={toggleTheme}
             aria-label="Toggle color theme"
@@ -100,7 +102,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             className="p-2 rounded-md"
           >
             <span aria-hidden="true">{themeIcon}</span>
-          </button>
+          </button> */}
           <HeaderNav data={data} />
           {/* <SideBarSocialLink data={data} />  */}
         </div>

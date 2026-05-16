@@ -1,6 +1,7 @@
 'use client'
 
 import { MainHeroBannerBlock as MainHeroBannerBlockProps } from '@/payload-types'
+// @ts-ignore: Allow importing CSS side-effect file without type declarations
 import './style.css'
 import React, { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
@@ -110,7 +111,10 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
 
   // ================= UI =================
   return (
-    <div className="hero-section overflow-hidden relative w-full h-screen" id="herosection">
+    <div
+      className="hero-section overflow-hidden relative w-full md:h-screen h-full section_gap_bottom"
+      id="herosection"
+    >
       {/* Background Image */}
       <div className="overlay">
         {bgImage && typeof bgImage !== 'string' && (
@@ -126,7 +130,7 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
       </div>
 
       {/* Content */}
-      <div className="container w-full h-full md:grid grid-cols-12 flex flex-col justify-between md:items-center items-start hero-section-content relative z-10">
+      <div className="container w-full h-full md:grid grid-cols-12 flex flex-col gap-10 justify-between md:items-center items-start hero-section-content relative z-10">
         <div className="hero-text flex flex-col gap-6 col-span-7">
           <div className="flex flex-col gap-2">
             <p className="start-text">Start /&gt;</p>
@@ -146,7 +150,7 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
         </div>
 
         <div className="button-container flex justify-end relative  col-span-5">
-          <div className="max-w-[400px] max-h-[400px] rounded-[50%] overflow-hidden relative">
+          <div className="2xl:max-w-[400px] max-w-[300px] 2xl:max-h-[400px] max-h-[300px] rounded-[50%] overflow-hidden relative">
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-600 to-blue-500 animate-pulse blur-lg scale-105"></div>
             <a className="hero-button z-20 relative max-w-[95%] max-h-[95%]" href={buttonLink}>
               {profileImage && typeof profileImage !== 'string' && (
