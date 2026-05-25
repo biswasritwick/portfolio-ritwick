@@ -21,6 +21,19 @@ export const MainHeroBanner: Block = {
       defaultValue: 'I am a developer and I develop',
     },
     {
+      name: 'developingwordText',
+      type: 'array',
+      label: 'Developing Words For Random Typing Effect',
+      fields: [
+        {
+          name: 'text',
+          type: 'text',
+          required: true,
+          label: 'Random Text',
+        },
+      ],
+    },
+    {
       name: 'description',
       type: 'textarea',
       required: true,

@@ -7,6 +7,7 @@ import type { Footer } from '@/payload-types'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
+import { Logomain } from '@/snippets/Icons'
 
 export async function Footer() {
   const footerData: Footer = await getCachedGlobal('footer', 1)()
@@ -16,22 +17,27 @@ export async function Footer() {
   return (
     <footer className="mt-auto border-t border-border bg-black dark:bg-card text-white footer_main">
       <div className="footer_inner fixed bottom-0 left-0 w-full">
-        <div className="container py-8 gap-8 flex flex-col md:flex-row md:justify-between ">
+        <div className="container h-full md:gap-8 flex flex-col md:flex-row md:justify-between ">
           <Link className="flex items-center" href="/">
             {/* <Logo /> */}
-            <div className="text-3xl font-bold text-white mousegrow" id="hero">
-              &lt;RITWICK/&gt;
+            <div
+              className="text-3xl font-bold text-white mousegrow footer-logo max-w-[300px]"
+              id="hero"
+            >
+              {/* &lt;RITWICK/&gt; */}
+              <Logomain />
             </div>
           </Link>
-
-          <div className="flex flex-col-reverse items-start md:flex-row gap-4 md:items-center">
-            <ThemeSelector />
-            <nav className="flex flex-col md:flex-row gap-4">
-              {navItems.map(({ link }, i) => {
-                return <CMSLink className="text-white" key={i} {...link} />
-              })}
-            </nav>
-          </div>
+          {navItems && navItems.length > 0 && (
+            <div className="flex flex-col-reverse items-start md:flex-row pt-8 gap-4 md:items-center">
+              {/* <ThemeSelector /> */}
+              <nav className="flex flex-col md:flex-row gap-4">
+                {navItems.map(({ link }, i) => {
+                  return <CMSLink className="text-white" key={i} {...link} />
+                })}
+              </nav>
+            </div>
+          )}
         </div>
       </div>
     </footer>

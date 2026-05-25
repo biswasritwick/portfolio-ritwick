@@ -85,13 +85,15 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       className="w-full flex items-center justify-center relative z-20 header_main  "
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div className="py-8 flex items-center justify-between header_main__inner container">
+      <div className=" flex items-center justify-between header_main__inner container">
         <Link href="/">
           {/* <Logo loading="eager" priority="high" className="invert dark:invert-0" /> */}
-          <div className="text-3xl font-bold text-white mousegrow" id="hero">
-            &lt;RITWICK/&gt;
+          <div className="text-3xl font-bold text-white mousegrow header-logo" id="hero">
+            {/* &lt;RITWICK/&gt;
+             */}
+
+            <Logomain />
           </div>
-          {/* <Logomain /> */}
         </Link>
         <div className="flex items-center gap-4">
           {/* <button

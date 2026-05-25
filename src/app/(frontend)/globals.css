@@ -463,6 +463,18 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
+.footer-logo,
+.header-logo {
+  max-width: 300px;
+  max-height: 100px;
+
+  >* {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
 /* global css end */
 /* styling start here  */
 /* styling end here  */
@@ -548,10 +560,20 @@ input[type='number'] {
   .hero-section {
     padding-top: 130px;
   }
-  .main_article {
+
+  /* .main_article {
     padding-bottom: 105px;
     padding-top: 130px;
+} */
 }
+
+@media screen and (max-width:540px) {
+  .display-block {
+    display: block;
+  }
+  .typing-container h4{
+    font-size: var(--h5) !important;
+  }
 }
 
 /* responsive end here  */

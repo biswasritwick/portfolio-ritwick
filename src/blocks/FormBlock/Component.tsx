@@ -17,7 +17,7 @@ export const FormBlockContent: React.FC<FormBlockContentProps> = ({
     // Fix 2: min-h-screen instead of h-screen so content isn't clipped
     <div
       className="hero-section-contact relative w-full h-fit grid grid-cols-12 lg:gap-8  container section_gap_bottom section_gap_top"
-      id="herosection"
+      id="herosection contact-us"
     >
       {forms && (
         <div className="lg:col-span-6 col-span-12   w-full">

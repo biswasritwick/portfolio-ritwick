@@ -795,6 +795,12 @@ export interface MainHeroBannerBlock {
   bgImage?: (string | null) | Media;
   name: string;
   staticText: string;
+  developingwordText?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
   description: string;
   profileImage?: (string | null) | Media;
   buttonLink: string;
@@ -1280,6 +1286,12 @@ export interface MainHeroBannerBlockSelect<T extends boolean = true> {
   bgImage?: T;
   name?: T;
   staticText?: T;
+  developingwordText?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
   description?: T;
   profileImage?: T;
   buttonLink?: T;

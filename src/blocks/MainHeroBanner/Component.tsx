@@ -13,6 +13,7 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
   profileImage,
   buttonLink,
   bgImage,
+  developingwordText,
 }) => {
   const interactiveRef = useRef<HTMLDivElement | null>(null)
 
@@ -50,7 +51,10 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
   }, [])
 
   // ================= Typing Effect =================
-  const words = ['Frontend', 'Backend', 'Fullstack', 'Web Apps', 'APIs', 'Mobile Apps']
+  const words =
+    developingwordText && developingwordText.length > 0
+      ? developingwordText.map((item) => item.text)
+      : ['Frontend', 'Backend', 'Fullstack', 'Web Apps', 'APIs', 'Mobile Apps']
 
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [displayText, setDisplayText] = useState(words[0])
@@ -112,7 +116,7 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
   // ================= UI =================
   return (
     <div
-      className="hero-section overflow-hidden relative w-full md:h-screen h-full section_gap_bottom"
+      className="hero-section overflow-hidden relative w-full md:h-screen h-full section_gap_bottom md:pt-20 pt-36"
       id="herosection"
     >
       {/* Background Image */}
@@ -140,9 +144,9 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
             </h2>
           </div>
 
-          <div className="typing-container flex flex-col gap-2">
+          <div className="typing-container flex flex-col sm:gap-2 gap-5">
             <h4 className="static-text">
-              {staticText} <span className="dynamic-text">{displayText}</span>
+              {staticText} <span className="dynamic-text display-block">{displayText}</span>
             </h4>
 
             <p className="hero-description">{description}</p>

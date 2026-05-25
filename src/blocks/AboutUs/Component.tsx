@@ -35,7 +35,7 @@ export const AboutUsBlock: React.FC<AboutUsBlockProps> = ({
   }
 
   return (
-    <div className="container about-section-main">
+    <div className="container about-section-main" id="about_us">
       <div className="about-section-content">
         <div className="about-content-inner flex flex-col items-center gap-5">
           {/* TITLE */}
@@ -43,7 +43,7 @@ export const AboutUsBlock: React.FC<AboutUsBlockProps> = ({
 
           {/* MAIN BOX */}
           <div className="education-section" ref={educationRef} onMouseMove={handleMouseMove}>
-            <div className="education-section-inner flex flex-col items-center p-8 gap-10">
+            <div className="education-section-inner flex flex-col items-center sm:p-8 p-5 gap-10">
               {/* DESCRIPTION */}
               <p className="about-description md:max-w-[80%] max-w-full text-center">
                 {aboutusStaticText}
