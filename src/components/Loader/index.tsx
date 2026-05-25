@@ -7,7 +7,18 @@ const text = 'Booting up the portfolio'
 export default function Loader() {
   const [displayedText, setDisplayedText] = useState('')
   const [loading, setLoading] = useState(0)
+  const [visible, setVisible] = useState(true)
 
+  // Hide loader after 3s
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(false)
+    }, 3000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Typing + progress animation
   useEffect(() => {
     let index = 0
 
@@ -26,6 +37,7 @@ export default function Loader() {
           clearInterval(progress)
           return 100
         }
+
         return prev + 2
       })
     }, 40)
@@ -35,6 +47,9 @@ export default function Loader() {
       clearInterval(progress)
     }
   }, [])
+
+  // AFTER hooks
+  if (!visible) return null
 
   return (
     <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
