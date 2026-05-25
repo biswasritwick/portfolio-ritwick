@@ -116,7 +116,7 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
   // ================= UI =================
   return (
     <div
-      className="hero-section overflow-hidden relative w-full md:h-screen h-full section_gap_bottom md:pt-20 pt-36"
+      className="hero-section overflow-hidden relative w-full md:h-screen h-fit section_gap_bottom md:pt-20 pt-36"
       id="herosection"
     >
       {/* Background Image */}
@@ -134,7 +134,7 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
       </div>
 
       {/* Content */}
-      <div className="container w-full h-full md:grid grid-cols-12 flex flex-col gap-10 justify-between md:items-center items-start hero-section-content relative z-10">
+      <div className="container w-full h-full md:grid grid-cols-12 flex flex-col gap-10 justify-between md:items-center items-start hero-section-content relative z-10 pb-5">
         <div className="hero-text flex flex-col gap-6 col-span-7">
           <div className="flex flex-col gap-2">
             <p className="start-text">Start /&gt;</p>

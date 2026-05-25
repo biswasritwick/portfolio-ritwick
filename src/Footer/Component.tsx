@@ -53,7 +53,7 @@ export async function Footer() {
                     typeof item.iconImage !== 'string' && (
                       <img
                         src={item.iconImage.url || ''}
-                        alt={item.text}
+                        alt={item.iconImage?.alt ?? item.text ?? ''}
                         className="w-5 h-5 object-contain"
                       />
                     )}
