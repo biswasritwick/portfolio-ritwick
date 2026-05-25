@@ -13,7 +13,7 @@ export async function Footer() {
   const footerData: Footer = await getCachedGlobal('footer', 1)()
 
   const navItems = footerData?.navItems || []
-
+  const socialItems = footerData?.socialItems || []
   return (
     <footer className="mt-auto border-t border-border bg-black dark:bg-card text-white footer_main">
       <div className="footer_inner fixed bottom-0 left-0 w-full">
@@ -36,6 +36,42 @@ export async function Footer() {
                   return <CMSLink className="text-white" key={i} {...link} />
                 })}
               </nav>
+            </div>
+          )}
+          {socialItems && socialItems.length > 0 && (
+            <div className="flex items-center gap-4">
+              {socialItems.map((item, i) => (
+                <Link
+                  key={i}
+                  href={item.link || '#'}
+                  target="_blank"
+                  className="flex items-center gap-2 text-white hover:text-gray-300 transition social_link"
+                >
+                  {/* Image Icon */}
+                  {item.iconType === 'image' &&
+                    item.iconImage &&
+                    typeof item.iconImage !== 'string' && (
+                      <img
+                        src={item.iconImage.url || ''}
+                        alt={item.text}
+                        className="w-5 h-5 object-contain"
+                      />
+                    )}
+
+                  {/* HTML / SVG Icon */}
+                  {item.iconType === 'html' && item.iconHtml && (
+                    <div
+                      className="w-5 h-5 flex items-center justify-center"
+                      dangerouslySetInnerHTML={{
+                        __html: item.iconHtml,
+                      }}
+                    />
+                  )}
+
+                  {/* Text */}
+                  <span className="text-sm">{item.text}</span>
+                </Link>
+              ))}
             </div>
           )}
         </div>

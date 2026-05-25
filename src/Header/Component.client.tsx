@@ -34,51 +34,51 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   }, [headerTheme])
 
   // Initialize local theme from storage or user preference
-  useEffect(() => {
-    try {
-      const saved = typeof window !== 'undefined' ? localStorage.getItem('theme') : null
-      if (saved === 'dark' || saved === 'light') {
-        setLocalMode(saved as 'dark' | 'light')
-      } else {
-        const prefersDark =
-          typeof window !== 'undefined' && window.matchMedia
-            ? window.matchMedia('(prefers-color-scheme: dark)').matches
-            : false
-        setLocalMode(prefersDark ? 'dark' : 'light')
-      }
-    } catch {
-      // ignore storage errors
-    }
-    // eslint-disable-next-line no-empty
-  }, [])
+  // useEffect(() => {
+  //   try {
+  //     const saved = typeof window !== 'undefined' ? localStorage.getItem('theme') : null
+  //     if (saved === 'dark' || saved === 'light') {
+  //       setLocalMode(saved as 'dark' | 'light')
+  //     } else {
+  //       const prefersDark =
+  //         typeof window !== 'undefined' && window.matchMedia
+  //           ? window.matchMedia('(prefers-color-scheme: dark)').matches
+  //           : false
+  //       setLocalMode(prefersDark ? 'dark' : 'light')
+  //     }
+  //   } catch {
+  //     // ignore storage errors
+  //   }
+  //   // eslint-disable-next-line no-empty
+  // }, [])
 
   // Apply HTML level classes to reflect the current theme
-  useEffect(() => {
-    const html = document.documentElement
-    if (localMode === 'dark') {
-      html.classList.add('dark_mode')
-      html.classList.remove('light_mode')
-    } else {
-      html.classList.add('light_mode')
-      html.classList.remove('dark_mode')
-    }
-  }, [localMode])
+  // useEffect(() => {
+  //   const html = document.documentElement
+  //   if (localMode === 'dark') {
+  //     html.classList.add('dark_mode')
+  //     html.classList.remove('light_mode')
+  //   } else {
+  //     html.classList.add('light_mode')
+  //     html.classList.remove('dark_mode')
+  //   }
+  // }, [localMode])
 
   // Toggle handler
-  const toggleTheme = () => {
-    setLocalMode((prev) => {
-      const next = prev === 'dark' ? 'light' : 'dark'
-      try {
-        localStorage.setItem('theme', next)
-      } catch {
-        // ignore storage errors
-      }
-      return next
-    })
-  }
+  // const toggleTheme = () => {
+  //   setLocalMode((prev) => {
+  //     const next = prev === 'dark' ? 'light' : 'dark'
+  //     try {
+  //       localStorage.setItem('theme', next)
+  //     } catch {
+  //       // ignore storage errors
+  //     }
+  //     return next
+  //   })
+  // }
 
-  // Determine icon based on current mode
-  const themeIcon = localMode === 'dark' ? '☀️' : '🌙'
+  // // Determine icon based on current mode
+  // const themeIcon = localMode === 'dark' ? '☀️' : '🌙'
 
   return (
     <header

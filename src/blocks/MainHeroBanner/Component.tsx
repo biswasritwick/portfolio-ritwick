@@ -154,11 +154,11 @@ export const MainHeroBanner: React.FC<MainHeroBannerBlockProps> = ({
         </div>
 
         <div className="button-container flex justify-end relative  col-span-5">
-          <div className="2xl:max-w-[400px] max-w-[300px] 2xl:max-h-[400px] max-h-[300px] rounded-[50%] overflow-hidden relative">
+          <div className="2xl:max-w-[400px] max-w-[300px] 2xl:max-h-[400px] max-h-[300px] rounded-[50%]  relative">
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-600 to-blue-500 animate-pulse blur-lg scale-105"></div>
-            <a className="hero-button z-20 relative max-w-[95%] max-h-[95%]" href={buttonLink}>
+            <a className="hero-button z-20 relative max-w-[95%] max-h-[95%] " href={buttonLink}>
               {profileImage && typeof profileImage !== 'string' && (
-                <figure className="profile_img w-full h-full ">
+                <figure className="profile_img w-full h-full rounded-[50%] overflow-hidden ">
                   <Image
                     src={profileImage.url || ''}
                     alt={profileImage.alt || 'feature_img'}

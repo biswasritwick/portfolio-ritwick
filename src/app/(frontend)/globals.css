@@ -323,7 +323,18 @@ h6,
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.social_link{
+  & img, & svg {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(342deg) brightness(102%) contrast(102%);
+    transition: all 0.3s ease-in-out;
 
+  }
+  &:hover {
+    & img, & svg {
+    filter: brightness(0) saturate(100%) invert(41%) sepia(35%) saturate(6047%) hue-rotate(206deg) brightness(104%) contrast(101%);
+    }
+  }
+}
 @keyframes hueRotate {
   0% {
     filter: hue-rotate(0deg);

@@ -1860,6 +1860,16 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  socialItems?:
+    | {
+        iconType?: ('image' | 'html') | null;
+        iconImage?: (string | null) | Media;
+        iconHtml?: string | null;
+        text?: string | null;
+        link: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1917,6 +1927,16 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        id?: T;
+      };
+  socialItems?:
+    | T
+    | {
+        iconType?: T;
+        iconImage?: T;
+        iconHtml?: T;
+        text?: T;
+        link?: T;
         id?: T;
       };
   updatedAt?: T;
