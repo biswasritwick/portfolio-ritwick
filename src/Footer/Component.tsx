@@ -17,7 +17,7 @@ export async function Footer() {
   return (
     <footer className="mt-auto border-t border-border bg-black dark:bg-card text-white footer_main">
       <div className="footer_inner fixed bottom-0 left-0 w-full">
-        <div className="container h-full md:gap-8 flex flex-col md:flex-row md:justify-between ">
+        <div className="container h-full md:gap-8 flex flex-row  !p-5 justify-between ">
           <Link className="flex items-center" href="/">
             {/* <Logo /> */}
             <div
